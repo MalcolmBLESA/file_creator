@@ -1,17 +1,23 @@
 #!/bin/sh
+filename=$1
+start=$2
+stop=$3
 
-if [ $# -ne 1 ]
+if [ $# -ne 3 ]
 then
-    echo "Usage: $0 FILENAME" >&2
+    echo "Usage: $0 FILENAME START STOP" >&2 
     exit 1
 fi
 
-filename=$1
+if [ $stop -le $start ]
+then
+    echo "START number must be greater than STOP number"
+fi
 
 i=0
-while [ $i -le 10 ]
+while [ $start -le $stop ]
 do
     touch ${filename}_${i}.txt
-    i=$((i + 1))
+    start=$((start + 1))
 done
 
