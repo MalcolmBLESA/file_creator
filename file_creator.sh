@@ -1,11 +1,13 @@
 #!/bin/sh
+
 filename=$1
 start=$2
 stop=$3
+extention=$4
 
-if [ $# -ne 3 ]
+if [ $# -ne 4 ]
 then
-    echo "Usage: $0 FILENAME START STOP" >&2 
+    echo "Usage: $0 FILENAME START STOP EXTENTION" >&2 
     exit 1
 fi
 
@@ -17,7 +19,7 @@ fi
 i=0
 while [ $start -le $stop ]
 do
-    touch ${filename}_${i}.txt
+    touch ${filename}_${i}.${extention}
     start=$((start + 1))
 done
 
